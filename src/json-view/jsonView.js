@@ -42,7 +42,7 @@ export default {
             default(){
                 return []
             }
-        }, 
+        },
         theme: { // 主题
             type: String,
             default: ''

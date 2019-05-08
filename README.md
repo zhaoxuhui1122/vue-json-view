@@ -12,7 +12,7 @@
 组件压所过后体积只有15.7kb，开启gzip压缩后只有4.74kb，
 
 ### 1.查看示例
-[在线示例](https://note.youdao.com/)
+[在线示例](https://zhaoxuhui1122.github.io/vue-json-view/)
 
 ```
 git clone  https://github.com/zhaoxuhui1122/vue-json-view.git
