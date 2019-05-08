@@ -13,6 +13,7 @@ module.exports = {
         library: 'vue-json-view',
         umdNamedDefine: true
     },
+    devtool: NODE_ENV==='develop'?'cheap-module-eval-source-map':'cheap-module-source-map',
     module: {
         rules: [{
                 test: /\.css$/,

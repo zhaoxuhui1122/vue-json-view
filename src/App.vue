@@ -2,7 +2,7 @@
     <div id="app">
         <div class="layout">
             <h1>vue-json-view</h1>
-            <a href="">使用文档</a>
+            <a target="_blank" href="https://github.com/zhaoxuhui1122/vue-json-view">使用文档</a>
 
             <div class="setting">
                 <ul>
@@ -90,7 +90,7 @@
         computed: {
             iconColor() {
                 const { color1, color2 } = this;
-                
+
                 if (color1 && color2) {
                     return [color1, color2];
                 } else {
