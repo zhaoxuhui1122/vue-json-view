@@ -44,7 +44,7 @@
                     <li>
                         <label>font-size</label>
                         <select v-model="fontSize">
-                            <option v-for="item in 10" :value="item*2+10">{{item*2+10}}</option>
+                            <option v-for="item in 10" :value="item+11">{{item+11}}</option>
                         </select>
                     </li>
                     <li>
