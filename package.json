@@ -1,7 +1,7 @@
 {
   "name": "vue-json-views",
   "description": "一个用于展示json的vue组件",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "zhaoxuhui <1258835133@qq.com>",
   "license": "MIT",
   "private": false,
@@ -12,15 +12,13 @@
     "build:npm": "cross-env NODE_ENV=npm webpack --progress --hide-modules",
     "test": "jest"
   },
-  "dependencies": {
-    "vue": "^2.5.11"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
   ],
   "devDependencies": {
+    "vue": "^2.5.11",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^6.26.0",
     "babel-jest": "^24.8.0",

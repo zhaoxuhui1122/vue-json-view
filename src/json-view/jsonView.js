@@ -5,9 +5,9 @@ export default {
             type: [Object, Array],
             required: true
         },
-        jsonKey: {// json的key值，用于第二层及二层以上的组件的key值
+        jsonKey: { // json的key值，用于第二层及二层以上的组件的key值
             type: String,
-            default:''
+            default: ''
         },
         closed: { // 是否折叠
             type: Boolean,
@@ -37,9 +37,9 @@ export default {
             type: String,
             default: 'square'
         },
-        iconColor:{//icon颜色
-            type:Array,
-            default(){
+        iconColor: { //icon颜色
+            type: Array,
+            default () {
                 return []
             }
         },
@@ -56,20 +56,26 @@ export default {
     },
     computed: {
         isArray() {
-            return Object.prototype.toString.call(this.data) === '[object Array]';
+            return this.getDataType(this.data)==='array';
         },
         length() {
             return this.isArray ? this.data.length : Object.keys(this.data).length;
         },
         subfix() {
-            return (this.isArray ? ']' : '}') + (this.isLast ? '' : ',');
+            const data = this.data;
+            if (this.isEmptyArrayOrObject(data)) {// 如果是空数组或空对象
+                return '';
+            } else {
+                return (this.isArray ? ']' : '}') + (this.isLast ? '' : ',');
+            }
         },
         prefix() {
             return this.isArray ? '[' : '{';
         },
         items() {
+            const json = this.data;
             if (this.isArray) {
-                return this.data.map(item => {
+                return json.map(item => {
                     const isJSON = this.isObjectOrArray(item);
                     return {
                         value: item,
@@ -78,7 +84,6 @@ export default {
                     };
                 });
             }
-            const json = this.data;
             return Object.keys(json).map(key => {
                 const item = json[key];
                 const isJSON = this.isObjectOrArray(item);
@@ -91,7 +96,7 @@ export default {
         },
         iconColors() {
             const { theme, iconColor } = this;
-            if (iconColor.length===2) {
+            if (iconColor.length === 2) {
                 return iconColor;
             } else {
                 if (theme === 'one-dark') {
@@ -104,22 +109,16 @@ export default {
             }
         }
     },
-    created() {
+    mounted() {
         this.innerclosed = this.closed;
         this.templateDeep = this.currentDeep;
-        this.$watch('closed', () => {
-            this.innerclosed = this.closed;
-        });
-    },
-    mounted() {
-
-
     },
     methods: {
+        getDataType(data) {
+            return Object.prototype.toString.call(data).slice(8, -1).toLowerCase();
+        },
         isObjectOrArray(source) {
-            const type = Object.prototype.toString.call(source);
-            const res = type === '[object Array]' || type === '[object Object]';
-            return res;
+            return ['array','object'].includes(this.getDataType(source));
         },
         toggleClose() {
             if (this.length === 0) {
@@ -134,12 +133,13 @@ export default {
         isClose(curDeep) {
             return curDeep > this.deep;
         },
-        valueType(item) {
-            if (item.value === null) {
-                return 'null';
-            } else {
-                return typeof item.value
-            }
+        isEmptyArrayOrObject(data){// 空数组或者空对象
+            return [{}, []].map(item=>JSON.stringify(item)).includes(JSON.stringify(data));
+        }
+    },
+    watch: {
+        closed(){
+            this.innerclosed = this.closed;
         }
     }
 };
