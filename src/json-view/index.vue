@@ -56,13 +56,7 @@
                             <span class="json-key">
                                 {{(isArray ? '' : '"' + item.key + '":')}}
                             </span>
-                            <span :class="['json-value',getDataType(item.value)]">
-                                {{
-                                    `${typeof item.value==='string'?'"':''}
-                                    ${item.value}${typeof item.value==='string'?'"':''}
-                                    ${index ===items.length - 1 ? '' : ','}`
-                                    }}
-                            </span>
+                            <span :class="['json-value',getDataType(item.value)]">{{`${typeof item.value==='string'?'"':''}${item.value}${typeof item.value==='string'?'"':''}${index ===items.length - 1 ? '' : ','}`}}</span>
                         </p>
                     </template>
                     <span v-if="!innerclosed" class="base-line"></span>
