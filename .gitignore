@@ -1,8 +1,9 @@
 .DS_Store
 node_modules/
+build/
 npm-debug.log
 yarn-error.log
-build/
+
 # Editor directories and files
 .idea
 *.suo
@@ -10,3 +11,7 @@ build/
 *.njsproj
 *.sln
 .vscode
+.npmignore
+_config.yml
+
+

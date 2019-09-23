@@ -1,7 +1,7 @@
 {
   "name": "vue-json-views",
   "description": "一个用于展示json的vue组件",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "zhaoxuhui <1258835133@qq.com>",
   "license": "MIT",
   "private": false,
