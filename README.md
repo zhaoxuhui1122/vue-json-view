@@ -4,7 +4,7 @@
 
 开发过程中参考了react-json-view部分api,组件实现的功能比较基础，但满足基本业务场景，也提供了一些可选配置。
 
-即使加载1M左右的json文时，结合deep深度限制，也能实现秒开的速度
+即使加载1M左右的json文时，也能实现秒开的速度
 
 组件压所过后体积只有15.7kb，开启gzip压缩后只有4.74kb，
 ![image.png](https://upload-images.jianshu.io/upload_images/9390764-4f34d905ebac20e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -74,3 +74,12 @@ line-height|行高，单位px|Number|24
 - 主题定制：根据需求定制主题，不同的主题名称会给组件定义对应的class名称，根据class重新定义样式即可，可参见项目内的主题配置
 - 修改icon样式：项目内icon使用的svg,支持三种样式，可自定义更换或者删除不需要的svg文件，以降低打包体积
 - ...
+
+### 更新日志
+v1.0.0
+- 优化加载速度，实现所有节点展开时也能较快加载
+  
+  优化前
+![before](./static/before.jpeg)
+  优化后
+![after](./static/after.jpeg)

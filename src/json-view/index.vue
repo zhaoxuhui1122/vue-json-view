@@ -1,5 +1,5 @@
 <template>
-    <div :class="['json-view-container',theme]">
+    <div :class="['json-view-container',theme]" v-if="visible">
         <div :class="['json-view', length ? 'closeable' : '']" :style="{fontSize:fontSize+'px',lineHeight:lineHeight+'px'}">
             <!--icon-style-square-->
             <span @click="toggleClose" class="angle" v-if="length && iconStyle==='square'">

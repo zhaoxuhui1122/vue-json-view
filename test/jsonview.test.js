@@ -11,8 +11,6 @@ describe('json-view组件测试', () => {
                 deep: 5
             }
         })
-
-
         expect(wrapper.vm.deep).toEqual(5)
     })
     it("设置jsonKey", () => {

@@ -51,8 +51,9 @@ export default {
     data() {
         return {
             innerclosed: true,
-            templateDeep: 1
-        };
+            templateDeep: 1,
+            visible:this.currentDeep<4
+        }
     },
     computed: {
         isArray() {
@@ -112,6 +113,9 @@ export default {
     mounted() {
         this.innerclosed = this.closed;
         this.templateDeep = this.currentDeep;
+        setTimeout(()=>{
+            this.visible = true;
+        },0);
     },
     methods: {
         getDataType(data) {
