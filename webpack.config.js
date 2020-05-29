@@ -1,7 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 const NODE_ENV = process.env.NODE_ENV;
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: NODE_ENV === 'npm' ? './src/index.js' : './src/main.js',
@@ -13,7 +13,7 @@ module.exports = {
         library: 'vue-json-view',
         umdNamedDefine: true
     },
-    devtool: NODE_ENV==='develop'?'cheap-module-eval-source-map':'cheap-module-source-map',
+    devtool: NODE_ENV==='develop'?'cheap-module-eval-source-map':'#source-map',
     module: {
         rules: [{
                 test: /\.css$/,
@@ -61,18 +61,13 @@ module.exports = {
     performance: {
         hints: false
     },
-    devtool: '#eval-source-map'
+    plugins:[
+        new CleanWebpackPlugin()
+    ]
 }
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'npm') {
-    module.exports.devtool = '#source-map'
-    // http://vue-loader.vuejs.org/en/workflow/production.html
     module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compress: {
@@ -82,8 +77,5 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'npm') {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
-        new CompressionWebpackPlugin({
-            algorithm: 'gzip'
-        })
     ])
 }

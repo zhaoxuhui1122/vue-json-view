@@ -4,11 +4,7 @@
 
 开发过程中参考了react-json-view部分api,组件实现的功能比较基础，但满足基本业务场景，也提供了一些可选配置。
 
-即使加载1M左右的json文时，也能实现秒开的速度
-
-组件压所过后体积只有15.7kb，开启gzip压缩后只有4.74kb，
-![image.png](https://upload-images.jianshu.io/upload_images/9390764-4f34d905ebac20e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+即使加载1M左右的json文时，也能实现快速打开
 
 ### 1.查看示例
 [在线示例](https://zhaoxuhui1122.github.io/vue-json-view/)
@@ -53,6 +49,46 @@ import jsonView from 'vue-json-views'
         }
     }
 </script>
+```
+
+**在非工程化的项目内引用**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="build/index.js"></script>
+    <style>
+        #app{
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <json-view :data="json"/>
+    </div>
+    <script>
+        window.onload = function(){
+           new Vue({
+               el:'#app',
+               data(){
+                return {
+                    json:{}
+                }
+               },
+               components:{
+                    jsonView:window['vue-json-view'].default
+               }
+           })
+        }
+    </script>
+</body>
+</html>
 ```
 ### 3.可选配置说明
 
