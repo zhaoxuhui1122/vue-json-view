@@ -66,7 +66,6 @@
 <script>
     // import jsonView from './json-view/index.vue';
     import jsonView from '../build/index';
-    // import jsonView from 'vue-json-views';
     import json from '../mock/mock.json';
     export default {
         name: 'app',

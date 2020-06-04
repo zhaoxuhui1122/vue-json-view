@@ -3,7 +3,8 @@
 .json-view-container {
         background-color: #fff;
         &.deep-1{
-            overflow: auto;
+            // overflow: auto;
+            padding-right: 10px;
         }
         .json-view {
             position: relative;
@@ -28,6 +29,8 @@
             .json-value {
                 display: inline-block;
                 color:#57b73b;
+                word-break: break-all;
+                white-space: normal;
                 &.number{
                     color: #2d8cf0;
                 }
