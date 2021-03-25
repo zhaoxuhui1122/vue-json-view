@@ -69,7 +69,7 @@
                         <p class="json-item" v-else :key="index">
                             <span class="json-key">{{(isArray ? '' : '"' + item.key + '":')}}</span>
                             <span :class="['json-value',getDataType(item.value)]">
-                                {{`${getDataType(item.value)==='string'?'"':''}${item.value}${getDataType(item.value)==='string'?'"':''}${index ===items.length - 1 ? '' : ','}`}}
+                                {{`${getDataType(item.value)==='string'?'"':''}${formatValue(item.value)}${getDataType(item.value)==='string'?'"':''}${index ===items.length - 1 ? '' : ','}`}}
                             </span>
                         </p>
                     </template>

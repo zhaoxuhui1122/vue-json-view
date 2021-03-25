@@ -121,8 +121,14 @@ export default {
         }, 0)
     },
     methods: {
+        formatValue(data) {
+            if(data && data._isBigNumber) {
+                return data.toString(10)
+            }
+            return data;
+        },
         getDataType(data) {
-            return Object.prototype.toString.call(data).slice(8, -1).toLowerCase()
+            return data && data._isBigNumber ? 'number' : Object.prototype.toString.call(data).slice(8, -1).toLowerCase()
         },
         isObjectOrArray(source) {
             return ['array', 'object'].includes(this.getDataType(source))
